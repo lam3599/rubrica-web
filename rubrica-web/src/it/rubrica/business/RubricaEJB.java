@@ -42,7 +42,7 @@ public class RubricaEJB implements RubricaEJBRemote, RubricaEJBLocal {
 		Query q = em.createQuery("SELECT c FROM Contatto c");
 		return q.getResultList();
 	}
-//
+//secondo commit di prova
 
 
 }
