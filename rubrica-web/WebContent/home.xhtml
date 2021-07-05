@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Rubrica Telefonica</title>
+	</h:head>
+		
+	<h:body>
+		<h1>Benvenuto nella tua rubrica</h1>
+		<p:dataTable value="#{rubrica.elencoContatti}" var="elemento">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Nome"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{elemento.nome}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Cognome"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{elemento.cognome}"></h:outputText>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Telefono"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{elemento.telefono}"></h:outputText>	
+			</p:column>
+			<p:column> 
+				<f:facet name="header">
+					<h:outputText value="Email"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{elemento.email}"></h:outputText>
+			</p:column>
+		</p:dataTable>
+		
+		<h:form>
+			<p:dialog widgetVar="inserimento" width="400" height="500" modal="true">
+				<p:panel>
+					<p:panelGrid columns="3">
+						<h:outputLabel value="Nome"></h:outputLabel>
+						<h:inputText id="nome" value="#{rubrica.contatto.nome}" required="true" requiredMessage="Nome obbligatorio"></h:inputText>
+						<p:message for="nome"></p:message>
+						
+						<h:outputLabel value="Cognome"></h:outputLabel>
+						<h:inputText id="cognome" value="#{rubrica.contatto.cognome}" required="true" requiredMessage="Cognome obbligatorio"></h:inputText>
+						<p:message for="cognome"></p:message>
+						
+						<h:outputLabel value="Telefono"></h:outputLabel>
+						<h:inputText id="telefono" value="#{rubrica.contatto.telefono}" required="true" requiredMessage="Telefono obbligatorio"></h:inputText>
+						<p:message for="telefono"></p:message>
+						
+						<h:outputLabel value="Email"></h:outputLabel>
+						<h:inputText value="#{rubrica.contatto.email}"></h:inputText>
+					</p:panelGrid>
+					<p:commandButton actionListener="#{rubrica.salva}" onclick="inserimento.close();" value="Salva"></p:commandButton>
+				</p:panel>
+			</p:dialog>
+			<p:commandButton type="button" onclick="PF('inserimento').show();" value="Aggiungi contatto"></p:commandButton>			
+			
+		</h:form>
+		
+	</h:body>
+	
+</html>
